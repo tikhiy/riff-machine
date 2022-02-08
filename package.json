@@ -22,5 +22,6 @@
     "Riff Machine",
     "Septuplets",
     "Triplets"
-  ]
+  ],
+  "main": "src/index.html"
 }

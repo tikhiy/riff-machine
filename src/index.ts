@@ -1,4 +1,3 @@
-import "./index.css"
 import { getDuration, Fraction } from "./core"
 import {
   BAR_WIDTH,
