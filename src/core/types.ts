@@ -43,4 +43,9 @@ export interface INode<T> {
   remove(): this
 }
 
+export type IVec2 = {
+  x: number
+  y: number
+}
+
 export type Note = Unit.Note

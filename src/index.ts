@@ -1,6 +1,8 @@
+import "./index.css"
 import { getDuration, Fraction } from "./core"
 import {
-  BAR_WIDTH,
+  NOTE_HEIGHT,
+  NOTE_WIDTH,
   GRID_COLOR_0,
   GRID_COLOR_1,
   GRID_COLOR_2,
@@ -8,6 +10,7 @@ import {
   HEIGHT,
   VOICE_COLOR_01,
   WIDTH,
+  BACKGROUND_COLOR,
 } from "./core/constants"
 import { INode, Note } from "./core/types"
 // import { generate } from "./core/generator"
@@ -51,7 +54,6 @@ const createKnob = (name: keyof IProps): HTMLElement => {
   return container
 }
 
-const backgroundColor = "#ffffff"
 const context = canvas.getContext("2d")!
 const px = (number: number) => `${number}px`
 
@@ -76,13 +78,13 @@ const initialize = () => {
 }
 
 const background = () => {
-  context.fillStyle = backgroundColor
+  context.fillStyle = BACKGROUND_COLOR
   context.fillRect(0, 0, WIDTH, HEIGHT)
 }
 
 const lines = () => {
   for (let i = 0; i < props.quantization * 4 + 1; ++i) {
-    const w = (state.scale.x * BAR_WIDTH) / props.quantization
+    const w = (state.scale.x * NOTE_WIDTH) / props.quantization
     const h = HEIGHT
     const x = state.position.x + i * w
     const y = 0
@@ -110,11 +112,11 @@ const notes = () => {
     for (let j = 0; j < deepest.length; ++j) {
       const node = deepest[j]!
       const w =
-        state.scale.x * (BAR_WIDTH / Fraction.valueOf(getDuration(node)))
-      const h = state.scale.y * 50
+        state.scale.x * (NOTE_WIDTH / Fraction.valueOf(getDuration(node)))
+      const h = state.scale.y * NOTE_HEIGHT
 
       if (isNote(node)) {
-        const x = state.position.x + state.scale.x * BAR_WIDTH * i + offset
+        const x = state.position.x + state.scale.x * NOTE_WIDTH * i + offset
         const y = state.position.y + state.scale.y * 200
         const padding = 2
 
