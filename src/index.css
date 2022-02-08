@@ -1,0 +1,14 @@
+canvas {
+  border: 1px solid #000000;
+}
+
+.knob-container {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fill, 100px);
+}
+
+.knob-container > input {
+  font-family: monospace;
+  width: 400px;
+}
